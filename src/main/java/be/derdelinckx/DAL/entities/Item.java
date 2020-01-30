@@ -1,4 +1,4 @@
-package be.derdelinckx.hectorsworld.models;
+package be.derdelinckx.DAL.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

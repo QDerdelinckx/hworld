@@ -1,9 +1,7 @@
-package be.derdelinckx.hectorsworld.models;
+package be.derdelinckx.DAL.entities;
 
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

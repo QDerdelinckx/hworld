@@ -1,6 +1,5 @@
-package be.derdelinckx.hectorsworld;
+package be.derdelinckx;
 
-import be.derdelinckx.hectorsworld.models.Archetypes;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
