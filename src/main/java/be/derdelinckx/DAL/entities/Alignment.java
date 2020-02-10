@@ -8,6 +8,10 @@ public enum Alignment {
 
     private String  alignment_id;
 
+    public String getAlignment_id() {
+        return alignment_id;
+    }
+
     Alignment(String alignment_id) {
         this.alignment_id = alignment_id;
     }

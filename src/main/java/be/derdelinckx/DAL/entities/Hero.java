@@ -8,7 +8,7 @@ import java.util.Set;
 public class Hero {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String skin;
     private String name;
@@ -24,6 +24,50 @@ public class Hero {
 
     @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Item> items = new HashSet<Item>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getSkin() {
+        return skin;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public Integer getStrength() {
+        return strength;
+    }
+
+    public Integer getIntelligence() {
+        return intelligence;
+    }
+
+    public Integer getCharisma() {
+        return charisma;
+    }
+
+    public Integer getLuck() {
+        return luck;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
 
     public Hero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck){
         this.skin = skin;

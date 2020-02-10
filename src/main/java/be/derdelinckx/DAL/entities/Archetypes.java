@@ -14,6 +14,10 @@ public enum Archetypes {
 
     private String archetype_id;
 
+    public String getArchetype_id() {
+        return archetype_id;
+    }
+
     Archetypes(String archetype_id) {
         this.archetype_id = archetype_id;
     }
