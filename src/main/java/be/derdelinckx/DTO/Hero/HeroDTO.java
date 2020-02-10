@@ -1,4 +1,4 @@
-package DTO.Hero;
+package be.derdelinckx.DTO.Hero;
 
 import be.derdelinckx.DAL.entities.Hero;
 

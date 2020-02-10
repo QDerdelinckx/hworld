@@ -1,8 +1,8 @@
 package be.derdelinckx.RestControllers;
 
-import DTO.Hero.HeroDTO;
 import be.derdelinckx.DAL.DAO.HeroDAO;
 import be.derdelinckx.DAL.entities.Hero;
+import be.derdelinckx.DTO.Hero.HeroDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
