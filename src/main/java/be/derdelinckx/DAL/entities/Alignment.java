@@ -1,18 +1,18 @@
 package be.derdelinckx.DAL.entities;
 
 public enum Alignment {
-    VERTUEUX("Vertueux"),
-    CHAOTIQUE("Chaotique"),
-    REBELLE("Rebelle"),
-    NEUTRE( "Neutre");
+    VIR("Vertueux"),
+    CHA("Chaotique"),
+    REB("Rebelle"),
+    NEU( "Neutre");
 
-    private String  alignment_id;
+    private String  alignment_name;
 
-    public String getAlignment_id() {
-        return alignment_id;
+    public String getAlignment_name() {
+        return alignment_name;
     }
 
-    Alignment(String alignment_id) {
-        this.alignment_id = alignment_id;
+    Alignment(String alignment_name) {
+        this.alignment_name = alignment_name;
     }
 }

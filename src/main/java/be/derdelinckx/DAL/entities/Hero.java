@@ -25,6 +25,9 @@ public class Hero {
     @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Item> items = new HashSet<Item>();
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Faction faction;
+
     public Long getId() {
         return id;
     }
@@ -68,6 +71,8 @@ public class Hero {
     public Set<Item> getItems() {
         return items;
     }
+
+    public Faction getFaction() { return faction; }
 
     public Hero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck){
         this.skin = skin;

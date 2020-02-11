@@ -11,15 +11,47 @@ public class Faction {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String faction_name;
-    private String faction_alignment;
+    @Enumerated(EnumType.STRING)
+    private Alignment faction_alignment;
     private String faction_skin;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private Set<Hero> heroes = new HashSet<Hero>();
+//    @OneToMany(cascade = CascadeType.PERSIST)
+//    private Set<Hero> heroes = new HashSet<Hero>();
 
-    public Faction(String faction_name, String faction_alignment, String faction_skin){
+    public Long getId() {
+        return id;
+    }
+
+    public String getFaction_name() {
+        return faction_name;
+    }
+
+    public void setFaction_name(String faction_name) {
         this.faction_name = faction_name;
-        this.faction_alignment = faction_alignment;
+    }
+
+    public String getFaction_alignment() {
+        return faction_alignment.getAlignment_name();
+    }
+
+    public String getFaction_skin() {
+        return faction_skin;
+    }
+
+    public void setFaction_skin(String faction_skin) {
+        this.faction_skin = faction_skin;
+    }
+
+//    public Set<Hero> getHeroes() {
+//        return heroes;
+//    }
+//
+//    public void setHeroes(Set<Hero> heroes) {
+//        this.heroes = heroes;
+//    }
+
+    public Faction(String faction_name, String faction_skin){
+        this.faction_name = faction_name;
         this.faction_skin = faction_skin;
     }
 

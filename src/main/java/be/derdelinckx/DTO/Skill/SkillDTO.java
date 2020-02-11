@@ -1,20 +1,15 @@
-package be.derdelinckx.DAL.entities;
+package be.derdelinckx.DTO.Skill;
 
-import javax.persistence.*;
+import be.derdelinckx.DAL.entities.Archetypes;
+import be.derdelinckx.DAL.entities.Skill;
 
-@Entity
-public class Skill {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class SkillDTO {
     private Long id;
     private String name;
     private String skin;
     private Integer score;
-    @Enumerated(EnumType.STRING)
-    private Archetypes archetype1;
-    @Enumerated(EnumType.STRING)
-    private Archetypes archetype2;
+    private String archetype1;
+    private String archetype2;
 
     public Long getId() {
         return id;
@@ -45,27 +40,28 @@ public class Skill {
     }
 
     public String getArchetype1() {
-        return archetype1.getArchetype_name();
+        return archetype1;
     }
 
-    public void setArchetype1(Archetypes archetype1) {
+    public void setArchetype1(String archetype1) {
         this.archetype1 = archetype1;
     }
 
     public String getArchetype2() {
-        return archetype2.getArchetype_name();
+        return archetype2;
     }
 
-    public void setArchetype2(Archetypes archetype2) {
+    public void setArchetype2(String archetype2) {
         this.archetype2 = archetype2;
     }
 
-    public Skill(String name, String skin, Integer score) {
-        this.name = name;
-        this.skin = skin;
-        this.score = score;
-    }
-
-    public Skill() {
+    public SkillDTO(){};
+    public SkillDTO(Skill skill){
+        this.id = skill.getId();
+        this.name = skill.getName();
+        this.skin = skill.getSkin();
+        this.score = skill.getScore();
+        this.archetype1 = skill.getArchetype1();
+        this.archetype2 = skill.getArchetype2();
     }
 }

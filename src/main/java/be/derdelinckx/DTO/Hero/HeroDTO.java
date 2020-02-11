@@ -1,6 +1,12 @@
 package be.derdelinckx.DTO.Hero;
 
+import be.derdelinckx.DAL.entities.Faction;
 import be.derdelinckx.DAL.entities.Hero;
+import be.derdelinckx.DTO.Skill.SkillDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class HeroDTO {
     private Long id;
@@ -12,6 +18,8 @@ public class HeroDTO {
     private Integer intelligence;
     private Integer charisma;
     private Integer luck;
+    private List<SkillDTO> skills;
+    private Faction faction;
 
     public HeroDTO(){};
     public HeroDTO(Hero hero){
@@ -24,6 +32,8 @@ public class HeroDTO {
         this.intelligence = hero.getIntelligence();
         this.charisma = hero.getCharisma();
         this.luck = hero.getLuck();
+        this.skills = hero.getSkills().stream().map(SkillDTO::new).collect(Collectors.toList());
+        this.faction = hero.getFaction();
     }
 
     public Long getId() {
@@ -96,5 +106,17 @@ public class HeroDTO {
 
     public void setLuck(Integer luck) {
         this.luck = luck;
+    }
+
+    public List<SkillDTO> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<SkillDTO> skills) {
+        this.skills = skills;
+    }
+
+    public Faction getFaction() {
+        return faction;
     }
 }

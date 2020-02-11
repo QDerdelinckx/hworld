@@ -2,23 +2,25 @@ package be.derdelinckx.DAL.entities;
 
 public enum Archetypes {
 
-    Diplomatie("Diplomatie"),
-    CombatCC("Combat au corps à corps"),
-    CombatAD("Combat à distance"),
-    Intimidation("Intimidation"),
-    MagieElementaire("Magie Élémentaire"),
-    Illusions("Illusionisme"),
-    Courage("Courage"),
-    Inspiration("Inspiration"),
-    MagieAugmentee( "Magie Augmentée");
+    DPC("Diplomatie"),
+    CCC("Combat au corps à corps"),
+    CAD("Combat à distance"),
+    IMD("Intimidation"),
+    EMG("Magie Élémentaire"),
+    ILL("Illusionisme"),
+    COU("Courage"),
+    INP("Inspiration"),
+    AUT("Autorité"),
+    AMG("Magie Augmentée"),
+    LGE("Langues étrangères");
 
-    private String archetype_id;
+    private String archetype_name;
 
-    public String getArchetype_id() {
-        return archetype_id;
+    public String getArchetype_name() {
+        return archetype_name;
     }
 
-    Archetypes(String archetype_id) {
-        this.archetype_id = archetype_id;
+    Archetypes(String archetype_name) {
+        this.archetype_name = archetype_name;
     }
 }
