@@ -20,6 +20,7 @@ public class HeroDTO {
     private Integer luck;
     private List<SkillDTO> skills;
     private Faction faction;
+    private Integer price;
 
     public HeroDTO(){};
     public HeroDTO(Hero hero){
@@ -34,6 +35,7 @@ public class HeroDTO {
         this.luck = hero.getLuck();
         this.skills = hero.getSkills().stream().map(SkillDTO::new).collect(Collectors.toList());
         this.faction = hero.getFaction();
+        this.price = hero.getPrice();
     }
 
     public Long getId() {
@@ -114,6 +116,14 @@ public class HeroDTO {
 
     public void setSkills(List<SkillDTO> skills) {
         this.skills = skills;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public Faction getFaction() {

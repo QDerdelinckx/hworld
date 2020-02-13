@@ -12,7 +12,13 @@ public enum Archetypes {
     INP("Inspiration"),
     AUT("Autorité"),
     AMG("Magie Augmentée"),
-    LGE("Langues étrangères");
+    LGE("Langues étrangères"),
+    ARC("Archéologie"),
+    COM("Connaissances informatiques"),
+    PIR("Piratage"),
+    PIL("Maîtrise des véhicules"),
+    ORI("Orientation"),
+    ATH("Athlétisme");
 
     private String archetype_name;
 

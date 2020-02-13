@@ -1,6 +1,7 @@
 package be.derdelinckx.DAL.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,8 +13,8 @@ public class Item {
     private String name;
     private String skin;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private Set<Bonus> bonus;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Bonus> bonus = new HashSet<Bonus>();
 
     public Long getId() {
         return id;

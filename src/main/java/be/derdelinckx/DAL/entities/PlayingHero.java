@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Hero {
+public class PlayingHero {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -18,10 +18,12 @@ public class Hero {
     private Integer intelligence;
     private Integer charisma;
     private Integer luck;
-    private Integer price;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Skill> skills = new HashSet<Skill>();
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Item> items = new HashSet<Item>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Faction faction;
@@ -66,11 +68,13 @@ public class Hero {
         return skills;
     }
 
+    public Set<Item> getItems() {
+        return items;
+    }
+
     public Faction getFaction() { return faction; }
 
-    public Integer getPrice() { return price; }
-
-    public Hero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck, Integer price){
+    public PlayingHero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck){
         this.skin = skin;
         this.name = name;
         this.description = description;
@@ -79,9 +83,8 @@ public class Hero {
         this.intelligence = intelligence;
         this.charisma = charisma;
         this.luck = luck;
-        this.price = price;
     }
 
-    public Hero() {
+    public PlayingHero() {
     }
 }

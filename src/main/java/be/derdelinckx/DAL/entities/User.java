@@ -17,7 +17,7 @@ public class User {
     private Integer crystals;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    private Set<Hero> heroes = new HashSet<Hero>();
+    private Set<PlayingHero> heroes = new HashSet<PlayingHero>();
 
     public Long getId() {
         return id;
@@ -67,20 +67,20 @@ public class User {
         this.crystals = crystals;
     }
 
-    public Set<Hero> getHeroes() {
+    public Set<PlayingHero> getHeroes() {
         return heroes;
     }
 
-    public void setHeroes(Set<Hero> heroes) {
+    public void setHeroes(Set<PlayingHero> heroes) {
         this.heroes = heroes;
     }
 
-    public User(String nickname, String email, String password){
+    public User(String nickname, String email, String password, Integer gold, Integer crystals){
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.gold = 100;
-        this.crystals = 100;
+        this.gold = gold;
+        this.crystals = crystals;
     }
 
     public User() {

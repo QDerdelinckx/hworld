@@ -7,6 +7,8 @@ public class UserDTO {
     private String nickname;
     private String email;
     private String password;
+    private Integer gold;
+    private Integer crystals;
 
     public UserDTO(){};
     public UserDTO(User user){
@@ -14,6 +16,8 @@ public class UserDTO {
         this.nickname = user.getNickname();
         this.email = user.getEmail();
         this.password = user.getPassword();
+        this.gold = user.getGold();
+        this.crystals = user.getCrystals();
     }
 
     public Long getId() {
@@ -46,5 +50,21 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getGold() {
+        return gold;
+    }
+
+    public void setGold(Integer gold) {
+        this.gold = gold;
+    }
+
+    public Integer getCrystals() {
+        return crystals;
+    }
+
+    public void setCrystals(Integer crystals) {
+        this.crystals = crystals;
     }
 }
