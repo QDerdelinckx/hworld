@@ -1,12 +1,16 @@
 package be.derdelinckx.RestControllers;
 
+import be.derdelinckx.DAL.DAO.PlayingHeroDAO;
 import be.derdelinckx.DAL.DAO.UserDAO;
+import be.derdelinckx.DAL.entities.PlayingHero;
 import be.derdelinckx.DAL.entities.User;
+import be.derdelinckx.DTO.Hero.PlayingHeroDTO;
 import be.derdelinckx.DTO.User.UserDTO;
 import org.omg.CORBA.RepositoryIdHelper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,9 +19,11 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final UserDAO userDao;
+    private final PlayingHeroDAO playingHeroDao;
 
-    public UserController(UserDAO userDao) {
+    public UserController(UserDAO userDao, PlayingHeroDAO playingHeroDao) {
         this.userDao = userDao;
+        this.playingHeroDao = playingHeroDao;
     }
 
     @GetMapping("")
@@ -34,7 +40,11 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    //@PostMapping("/security")
+    @GetMapping("/{id}/heroes")
+    public ResponseEntity<List<PlayingHeroDTO>> getAllHeroesByUser(@PathVariable Long id){
+        User user = userDao.findById(id).orElse(null);
 
+        return ResponseEntity.ok(user.getHeroes().stream().map(PlayingHeroDTO::new).collect(Collectors.toList()));
+    }
 
 }
