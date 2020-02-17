@@ -1,6 +1,7 @@
 package be.derdelinckx.RestControllers;
 
 import be.derdelinckx.DAL.DAO.UserDAO;
+import be.derdelinckx.DAL.entities.User;
 import be.derdelinckx.DTO.AuthenticationRequest;
 import be.derdelinckx.config.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -30,29 +31,19 @@ public class AuthController {
     @Autowired
     UserDAO userDAO;
 
-    /*@PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthenticationRequest data) {
-        try {
-            String nickname = data.getUsername();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(nickname, data.getPassword()));
-            String token = jwtTokenProvider.createToken(nickname);
-            Map<Object, Object> model = new HashMap<>();
-            model.put("username", nickname);
-            model.put("token", token);
-            return ResponseEntity.ok(model);
-        } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid username/password supplied");
-        }
-    }*/
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthenticationRequest data) {
         System.out.println(data);
-        String nickname = data.getUsername();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(nickname, data.getPassword()));
-        String token = jwtTokenProvider.createToken(nickname);
+        String username = data.getUsername();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
+        User u = this.userDAO.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        String token = jwtTokenProvider.createToken(username);
 
         Map<Object, Object> model = new HashMap<>();
-        model.put("username", nickname);
+        model.put("id", u.getId());
+        model.put("username", username);
+        model.put("gold", u.getGold());
+        model.put("crystals", u.getCrystals());
         model.put("token", token);
         return ResponseEntity.ok(model);
     }

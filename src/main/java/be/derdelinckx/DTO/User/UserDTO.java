@@ -4,7 +4,7 @@ import be.derdelinckx.DAL.entities.User;
 
 public class UserDTO {
     private Long id;
-    private String nickname;
+    private String username;
     private String email;
     private String password;
     private Integer gold;
@@ -13,7 +13,7 @@ public class UserDTO {
     public UserDTO(){};
     public UserDTO(User user){
         this.id = user.getId();
-        this.nickname = user.getNickname();
+        this.username = user.getUsername();
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.gold = user.getGold();
@@ -28,12 +28,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

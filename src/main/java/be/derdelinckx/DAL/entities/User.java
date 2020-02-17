@@ -15,7 +15,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nickname;
+    private String username;
     private String email;
     private String password;
     private Integer gold;
@@ -32,12 +32,12 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -55,11 +55,6 @@ public class User implements UserDetails {
 
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return nickname;
     }
 
     @Override
@@ -110,8 +105,8 @@ public class User implements UserDetails {
         this.heroes = heroes;
     }
 
-    public User(String nickname, String email, String password, Integer gold, Integer crystals){
-        this.nickname = nickname;
+    public User(String username, String email, String password, Integer gold, Integer crystals){
+        this.username = username;
         this.email = email;
         this.password = password;
         this.gold = gold;
