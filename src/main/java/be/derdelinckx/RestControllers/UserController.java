@@ -6,15 +6,14 @@ import be.derdelinckx.DAL.entities.PlayingHero;
 import be.derdelinckx.DAL.entities.User;
 import be.derdelinckx.DTO.Hero.PlayingHeroDTO;
 import be.derdelinckx.DTO.User.UserDTO;
-import org.omg.CORBA.RepositoryIdHelper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/user")
 public class UserController {
 
