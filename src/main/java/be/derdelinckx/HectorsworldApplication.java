@@ -27,21 +27,21 @@ public class HectorsworldApplication {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void addUser(){
-		User user = new User("a", "a@a", null, 99999, 99999);
-		user.setPassword(passwordEncoder.encode("a"));
-		User user2 = new User("ManiaxSkell", "quentin.derdelinckx@gmail.com", null, 99999, 99999);
-		user2.setPassword(passwordEncoder.encode("spiraleyes27"));
+		@EventListener(ApplicationReadyEvent.class)
+		public void addUser(){
+			User user = new User("a", "a@a", null, 99999, 99999);
+			user.setPassword(passwordEncoder.encode("a"));
+			User user2 = new User("ManiaxSkell", "quentin.derdelinckx@gmail.com", null, 99999, 99999);
+			user2.setPassword(passwordEncoder.encode("spiraleyes27"));
 
-        PlayingHero playingHero = new PlayingHero("hector.png", "Hector", "Illustre Commandant", 2, 6, 8, 4);
-        PlayingHero playingHero2 = new PlayingHero("lewies.png", "Lewie Scarowl", "Contrebandier Illusionniste", 4, 10, 3, 3);
-        Set<PlayingHero> userHeroes = new HashSet<PlayingHero>();
-        userHeroes.add(playingHero);
-        userHeroes.add(playingHero2);
-        user.setHeroes(userHeroes);
-
-        userDAO.save(user);
-        userDAO.save(user2);
-	}
+		//        PlayingHero playingHero = new PlayingHero("hector.png", "Hector", "Illustre Commandant", 2, 6, 8, 4);
+		//        PlayingHero playingHero2 = new PlayingHero("lewies.png", "Lewie Scarowl", "Contrebandier Illusionniste", 4, 10, 3, 3);
+		//        Set<PlayingHero> userHeroes = new HashSet<PlayingHero>();
+		//        userHeroes.add(playingHero);
+		//        userHeroes.add(playingHero2);
+		//        user.setHeroes(userHeroes);
+		//
+		        userDAO.save(user);
+		       userDAO.save(user2);
+		}
 }

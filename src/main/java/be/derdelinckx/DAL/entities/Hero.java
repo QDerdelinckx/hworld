@@ -20,7 +20,7 @@ public class Hero {
     private Integer luck;
     private Integer price;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Skill> skills = new HashSet<Skill>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)

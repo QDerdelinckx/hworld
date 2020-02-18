@@ -5,6 +5,7 @@ import be.derdelinckx.DAL.DAO.PlayingHeroDAO;
 import be.derdelinckx.DAL.DAO.UserDAO;
 import be.derdelinckx.DAL.entities.Hero;
 import be.derdelinckx.DAL.entities.PlayingHero;
+import be.derdelinckx.DAL.entities.Skill;
 import be.derdelinckx.DAL.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin
@@ -45,6 +47,9 @@ public class ShopController {
         newHero.setCharisma(chosenHero.getCharisma());
         newHero.setLuck(chosenHero.getLuck());
         newHero.setFaction(chosenHero.getFaction());
+
+        Set<Skill> newSkills = chosenHero.getSkills().stream().collect(Collectors.toSet());
+        newHero.setSkills(newSkills);
 
         playingHeroDAO.save(newHero);
 
