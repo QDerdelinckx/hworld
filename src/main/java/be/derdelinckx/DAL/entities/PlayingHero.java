@@ -28,6 +28,28 @@ public class PlayingHero {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Faction faction;
 
+    public void setSkin(String skin) { this.skin = skin; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public void setLevel(Integer level) { this.level = level; }
+
+    public void setStrength(Integer strength) { this.strength = strength; }
+
+    public void setIntelligence(Integer intelligence) { this.intelligence = intelligence; }
+
+    public void setCharisma(Integer charisma) { this.charisma = charisma; }
+
+    public void setLuck(Integer luck) { this.luck = luck; }
+
+    public void setSkills(Set<Skill> skills) { this.skills = skills; }
+
+    public void setItems(Set<Item> items) { this.items = items; }
+
+    public void setFaction(Faction faction) { this.faction = faction; }
+
     public Long getId() {
         return id;
     }
