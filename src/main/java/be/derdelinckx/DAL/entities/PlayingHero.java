@@ -20,13 +20,16 @@ public class PlayingHero {
     private Integer luck;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    private Set<Skill> skills = new HashSet<Skill>();
+    private Set<Skill> skills = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    private Set<Item> items = new HashSet<Item>();
+    private Set<Item> items = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Faction faction;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Role role;
 
     public void setSkin(String skin) { this.skin = skin; }
 
@@ -96,7 +99,15 @@ public class PlayingHero {
 
     public Faction getFaction() { return faction; }
 
-    public PlayingHero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck){
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public PlayingHero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck,Role role){
         this.skin = skin;
         this.name = name;
         this.description = description;
@@ -105,6 +116,7 @@ public class PlayingHero {
         this.intelligence = intelligence;
         this.charisma = charisma;
         this.luck = luck;
+        this.role = role;
     }
 
     public PlayingHero() {

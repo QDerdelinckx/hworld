@@ -4,6 +4,7 @@ import be.derdelinckx.DAL.entities.Faction;
 import be.derdelinckx.DAL.entities.Hero;
 import be.derdelinckx.DAL.entities.PlayingHero;
 import be.derdelinckx.DTO.Item.ItemDTO;
+import be.derdelinckx.DTO.Role.RoleDTO;
 import be.derdelinckx.DTO.Skill.SkillDTO;
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class PlayingHeroDTO {
     private List<SkillDTO> skills;
     private List<ItemDTO> items;
     private Faction faction;
+    private RoleDTO roleDTO;
 
-    public PlayingHeroDTO(){};
+    public PlayingHeroDTO(){}
     public PlayingHeroDTO(PlayingHero hero){
         this.id = hero.getId();
         this.skin = hero.getSkin();
@@ -127,5 +129,13 @@ public class PlayingHeroDTO {
 
     public Faction getFaction() {
         return faction;
+    }
+
+    public RoleDTO getRoleDTO() {
+        return roleDTO;
+    }
+
+    public void setRoleDTO(RoleDTO roleDTO) {
+        this.roleDTO = roleDTO;
     }
 }
