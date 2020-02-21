@@ -1,8 +1,8 @@
 package be.derdelinckx.DTO.Role;
 
-import be.derdelinckx.DAL.entities.Role;
+import be.derdelinckx.DAL.entities.RoleCrew;
 
-public class RoleDTO {
+public class RoleCrewDTO {
 
     private String name;
 
@@ -14,10 +14,10 @@ public class RoleDTO {
         this.name = name;
     }
 
-    public RoleDTO() {
+    public RoleCrewDTO() {
     }
 
-    public RoleDTO(Role role) {
-        this.name = role.getName();
+    public RoleCrewDTO(RoleCrew roleCrew) {
+        this.name = roleCrew.getName();
     }
 }

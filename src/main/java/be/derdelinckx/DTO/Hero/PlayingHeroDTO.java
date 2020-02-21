@@ -1,10 +1,11 @@
 package be.derdelinckx.DTO.Hero;
 
 import be.derdelinckx.DAL.entities.Faction;
-import be.derdelinckx.DAL.entities.Hero;
 import be.derdelinckx.DAL.entities.PlayingHero;
+import be.derdelinckx.DAL.entities.RoleCrew;
+import be.derdelinckx.DTO.Faction.FactionDTO;
 import be.derdelinckx.DTO.Item.ItemDTO;
-import be.derdelinckx.DTO.Role.RoleDTO;
+import be.derdelinckx.DTO.Role.RoleCrewDTO;
 import be.derdelinckx.DTO.Skill.SkillDTO;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public class PlayingHeroDTO {
     private Integer luck;
     private List<SkillDTO> skills;
     private List<ItemDTO> items;
-    private Faction faction;
-    private RoleDTO roleDTO;
+    private FactionDTO factionDTO;
+    private RoleCrew roleCrew;
 
     public PlayingHeroDTO(){}
     public PlayingHeroDTO(PlayingHero hero){
@@ -38,7 +39,8 @@ public class PlayingHeroDTO {
         this.luck = hero.getLuck();
         this.skills = hero.getSkills().stream().map(SkillDTO::new).collect(Collectors.toList());
         this.items = hero.getItems().stream().map(ItemDTO::new).collect(Collectors.toList());
-        this.faction = hero.getFaction();
+        this.factionDTO = new FactionDTO(hero.getFaction());
+        this.roleCrew = hero.getRoleCrew();
     }
 
     public Long getId() {
@@ -125,17 +127,18 @@ public class PlayingHeroDTO {
 
     public void setItems(List<ItemDTO> items) { this.items = items; }
 
-    public void setFaction(Faction faction) { this.faction = faction; }
+    public void setFaction(FactionDTO factionDTO) { this.factionDTO = factionDTO; }
 
-    public Faction getFaction() {
-        return faction;
+    public FactionDTO getFaction() {
+        return factionDTO;
     }
 
-    public RoleDTO getRoleDTO() {
-        return roleDTO;
+    public RoleCrew getRoleCrew() {
+        return roleCrew;
     }
 
-    public void setRoleDTO(RoleDTO roleDTO) {
-        this.roleDTO = roleDTO;
+    public void setRoleCrew(RoleCrew roleCrew) {
+        this.roleCrew = roleCrew;
     }
+
 }

@@ -55,6 +55,9 @@ public class Faction {
         this.faction_skin = faction_skin;
     }
 
+
+
     public Faction() {
     }
+
 }

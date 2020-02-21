@@ -29,7 +29,7 @@ public class PlayingHero {
     private Faction faction;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Role role;
+    private RoleCrew roleCrew;
 
     public void setSkin(String skin) { this.skin = skin; }
 
@@ -99,15 +99,15 @@ public class PlayingHero {
 
     public Faction getFaction() { return faction; }
 
-    public Role getRole() {
-        return role;
+    public RoleCrew getRoleCrew() {
+        return roleCrew;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleCrew(RoleCrew roleCrew) {
+        this.roleCrew = roleCrew;
     }
 
-    public PlayingHero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck,Role role){
+    public PlayingHero(String skin, String name, String description, Integer strength, Integer intelligence, Integer charisma, Integer luck, RoleCrew roleCrew){
         this.skin = skin;
         this.name = name;
         this.description = description;
@@ -116,7 +116,7 @@ public class PlayingHero {
         this.intelligence = intelligence;
         this.charisma = charisma;
         this.luck = luck;
-        this.role = role;
+        this.roleCrew = roleCrew;
     }
 
     public PlayingHero() {

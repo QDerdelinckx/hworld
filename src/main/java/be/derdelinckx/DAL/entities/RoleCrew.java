@@ -3,7 +3,8 @@ package be.derdelinckx.DAL.entities;
 import javax.persistence.*;
 
 @Entity
-public class Role {
+@Table(name = "role_crew")
+public class RoleCrew {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -12,7 +13,7 @@ public class Role {
     @Column (name = "name",nullable = false)
     private String name;
 
-    public Role() {
+    public RoleCrew() {
     }
 
     public Long getId() {
