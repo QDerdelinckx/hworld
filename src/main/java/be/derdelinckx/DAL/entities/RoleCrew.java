@@ -10,7 +10,7 @@ public class RoleCrew {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id_role")
     private Long id;
-    @Column (name = "name",nullable = false)
+    @Column (name = "name",nullable = false,unique = true)
     private String name;
 
     public RoleCrew() {
