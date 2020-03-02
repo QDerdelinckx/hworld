@@ -417,4 +417,37 @@ INSERT INTO HERO_SKILLS(HERO_ID, SKILLS_ID)
 VALUES(6,6);
 
 -- ROLE Equipage
-insert into role_crew (NAME) values ('CAPTAIN'),('SECOND OFFICER'),('ENGINEER'),('MATEY'),('COFEEMAN');
+INSERT INTO ROLE_CREW (NAME, SINGLED, ALIGNMENT_BONUS) VALUES
+('Capitaine', true, 10),
+('Officier Second', true, 5),
+('Navigateur en Chef', true, 5),
+('Pilote', false, 3),
+('Cartographe', true, 3),
+('Ingénieur en chef', true, 5),
+('Ingénieur', false, 3),
+('Médecin en chef', true, 5),
+('Médecin', false, 3),
+('Tacticien', true, 5),
+('Général', false, 4),
+('Soldat', false, 2),
+('Stagiaire', false, 1);
+
+-- BONUS Role
+INSERT INTO ROLE_CREW_BONUS (ROLE_CREW_ID_ROLE, BONUS_ID) VALUES
+(1, 4),
+(1, 36),
+(1, 32),
+(2, 36),
+(2, 27),
+(2, 3),
+(3, 64),
+(3, 60),
+(4, 63),
+(4, 59),
+(5, 64),
+(5, 31),
+(6, 52),
+(6, 56),
+(6, 67),
+(7, 51),
+(7, 67);

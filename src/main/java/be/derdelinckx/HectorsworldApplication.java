@@ -41,7 +41,7 @@ public class HectorsworldApplication {
 		//        userHeroes.add(playingHero2);
 		//        user.setHeroes(userHeroes);
 		//
-		        userDAO.save(user);
+				userDAO.save(user);
 		       userDAO.save(user2);
 		}
 }

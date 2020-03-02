@@ -45,4 +45,13 @@ public class CrewController {
 
         return ResponseEntity.ok( playingHeroDAO.save(myHero));
     }
+
+    @PostMapping("/reset")
+    public ResponseEntity resetRoleCrew (@RequestBody PlayingHeroDTO playingHeroDTO)
+    {
+        PlayingHero myHero = playingHeroDAO.findById(playingHeroDTO.getId()).orElse(null);
+        myHero.setRoleCrew(null);
+
+        return ResponseEntity.ok( playingHeroDAO.save(myHero));
+    }
 }
