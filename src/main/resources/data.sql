@@ -451,3 +451,36 @@ INSERT INTO ROLE_CREW_BONUS (ROLE_CREW_ID_ROLE, BONUS_ID) VALUES
 (6, 67),
 (7, 51),
 (7, 67);
+
+-- EPISODES
+INSERT INTO EPISODE (ID, QUEST_SEQUENCE, STORY) VALUES
+(1, 1, 'Nous avons découvert une nouvelle civilisation !'),
+(2, 1, 'Une transmission cryptée nous est parvenue.');
+
+-- EPISODE OPTIONS
+INSERT INTO EPISODE_OPTION (ID, DESCRIPTION) VALUES
+(1, 'Dialoguer avec eux pour former une alliance'),
+(2, 'Les asservir et piller leurs richesses'),
+(3, 'Décrypter le code avec les machines'),
+(4, 'Envoyer un détecteur de vie suivre la source du signal');
+
+-- EPISODE + EPISODE OPTIONS
+INSERT INTO EPISODE_EPISODE_OPTIONS (EPISODE_ID, EPISODE_OPTIONS_ID) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4);
+
+-- REQUIREMENTS
+INSERT INTO REQUIREMENT (ID, ARCHETYPE, REQUIRED_SCORE) VALUES
+(1, 'DPC', 12),
+(2, 'IMD', 12),
+(3, 'COM', 8),
+(4, 'AMG', 10);
+
+ --EPISODE OPTIONS + REQUIREMENTS
+INSERT INTO EPISODE_OPTION_REQUIREMENTS (EPISODE_OPTION_ID, REQUIREMENTS_ID) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4);

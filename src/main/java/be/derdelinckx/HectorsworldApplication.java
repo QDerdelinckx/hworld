@@ -29,7 +29,7 @@ public class HectorsworldApplication {
 
 		@EventListener(ApplicationReadyEvent.class)
 		public void addUser(){
-			User user = new User("a", "a@a", null, 99999, 99999);
+			User user = new User("a", "a@a", null, 25000, 25000);
 			user.setPassword(passwordEncoder.encode("a"));
 			User user2 = new User("ManiaxSkell", "quentin.derdelinckx@gmail.com", null, 99999, 99999);
 			user2.setPassword(passwordEncoder.encode("spiraleyes27"));

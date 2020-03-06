@@ -21,8 +21,9 @@ public class HeroController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<HeroDTO>> getAll(){
-        List<Hero> heroes = heroDAO.findAll();
+    public ResponseEntity<List<HeroDTO>> getAll(Integer crystals){
+        //List<Hero> heroes = heroDAO.findAll();
+        List<Hero> heroes = heroDAO.filterByCost(crystals);
 
         return ResponseEntity.ok(heroes.stream().map(HeroDTO::new).collect(Collectors.toList()));
     }
@@ -40,5 +41,4 @@ public class HeroController {
 
         return ResponseEntity.ok(heroes.stream().map(HeroDTO::new).collect(Collectors.toList()));
     }
-
 }

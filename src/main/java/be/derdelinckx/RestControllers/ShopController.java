@@ -1,5 +1,6 @@
 package be.derdelinckx.RestControllers;
 
+import be.derdelinckx.BL.ShopService;
 import be.derdelinckx.DAL.DAO.HeroDAO;
 import be.derdelinckx.DAL.DAO.PlayingHeroDAO;
 import be.derdelinckx.DAL.DAO.UserDAO;
@@ -35,33 +36,22 @@ public class ShopController {
     @PostMapping("/buy/{id}/{userId}")
     public ResponseEntity getById(@PathVariable Long id, @PathVariable Long userId){
 
+        //Récupération des données du héros choisi et de l'user courant
         Hero chosenHero = heroDAO.findById(id).orElse(null);
-        PlayingHero newHero = new PlayingHero();
-
-        newHero.setSkin(chosenHero.getSkin());
-        newHero.setName(chosenHero.getName());
-        newHero.setDescription(chosenHero.getDescription());
-        newHero.setLevel(1);
-        newHero.setStrength(chosenHero.getStrength());
-        newHero.setIntelligence(chosenHero.getIntelligence());
-        newHero.setCharisma(chosenHero.getCharisma());
-        newHero.setLuck(chosenHero.getLuck());
-        newHero.setFaction(chosenHero.getFaction());
-
-        Set<Skill> newSkills = chosenHero.getSkills().stream().collect(Collectors.toSet());
-        newHero.setSkills(newSkills);
-
-        playingHeroDAO.save(newHero);
-
         User currentUser = userDAO.findById(userId).orElse(null);
-        Integer currentUserGold = currentUser.getGold();
-        Set<PlayingHero> currentUserHeroes = currentUser.getHeroes();
+        ShopService shopService = new ShopService();
 
-        currentUserHeroes.add(newHero);
-        currentUser.setGold(currentUserGold - chosenHero.getPrice());
+        //Vérification du budget
+        if(shopService.verifyCrystals(currentUser, chosenHero)) {
 
-        userDAO.save(currentUser);
+            //Clonage du héros
+            PlayingHero newHero = shopService.cloneHero(chosenHero);
+            playingHeroDAO.save(newHero);
 
+            //Sauvegarde du héros dans la liste du joueur
+            userDAO.save(shopService.buyAndUpdate(currentUser, newHero, chosenHero));
+
+        }
         return ResponseEntity.ok(null);
     }
 
