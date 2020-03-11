@@ -1,6 +1,6 @@
 Feature: Calculate the skill score of my heroes
 
-    Scenario: testing the skill implementation
+    Scenario: the hero doesn't have a role attributed to him
         Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
         And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 3
         Then the skill named "Test" has a score of 5
@@ -13,6 +13,7 @@ Feature: Calculate the skill score of my heroes
         And said role has a bonus of 2 on archetype "AMG"
         And said role has a bonus of 1 on archetype "CCC"
         And said role has a bonus of 1 on archetype "EMG"
+        And the hero is powered Up
         Then the skill named "Test" has a score of 5
         Then the skill named "Aventure" has a score of 3
 
@@ -21,6 +22,7 @@ Feature: Calculate the skill score of my heroes
         And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 3
     	When the hero is assigned a role
     	And said role has a bonus of 2 on archetype "DPC"
+        And the hero is powered Up
         Then the skill named "Test" has a score of 7
         Then the skill named "Aventure" has a score of 3
 
@@ -31,6 +33,7 @@ Feature: Calculate the skill score of my heroes
         And said role has a bonus of 2 on archetype "DPC"
         And said role has a bonus of 1 on archetype "CAD"
         And said role has a bonus of 1 on archetype "EMG"
+        And the hero is powered Up
         Then the skill named "Test" has a score of 8
         Then the skill named "Aventure" has a score of 3
 
@@ -43,4 +46,14 @@ Feature: Calculate the skill score of my heroes
         And the hero is powered Up
         Then the skill named "Test" has a score of 7
         Then the skill named "Aventure" has a score of 4
+
+    Scenario: the hero has a role with negative effects on his skills
+        Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
+        And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 3
+        When the hero is assigned a role
+        And said role has a bonus of -2 on archetype "DPC"
+        And said role has a bonus of -1 on archetype "ORI"
+        And the hero is powered Up
+        Then the skill named "Test" has a score of 3
+        Then the skill named "Aventure" has a score of 2
 
