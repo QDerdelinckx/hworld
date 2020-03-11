@@ -42,11 +42,19 @@ public class ShopService {
     }
 
     public User buyAndUpdate(User currentUser, PlayingHero newHero, Hero chosenHero){
-        Integer currentUserGold = currentUser.getGold();
+        Integer currentUserCrystals = currentUser.getCrystals();
         Set<PlayingHero> currentUserHeroes = currentUser.getHeroes();
 
-        currentUserHeroes.add(newHero);
-        currentUser.setGold(currentUserGold - chosenHero.getPrice());
+        for(PlayingHero h : currentUserHeroes){
+            if(h.getName().equals(chosenHero.getName())) {
+                return currentUser;
+            }
+        }
+
+        if(currentUser.getCrystals() >= chosenHero.getPrice()) {
+            currentUserHeroes.add(newHero);
+            currentUser.setCrystals(currentUserCrystals - chosenHero.getPrice());
+        }
 
         return currentUser;
     }
