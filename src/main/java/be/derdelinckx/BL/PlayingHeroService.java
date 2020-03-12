@@ -1,8 +1,9 @@
 package be.derdelinckx.BL;
 
-import be.derdelinckx.DAL.entities.Bonus;
-import be.derdelinckx.DAL.entities.PlayingHero;
-import be.derdelinckx.DAL.entities.Skill;
+import be.derdelinckx.DAL.entities.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class PlayingHeroService {
 
@@ -17,6 +18,28 @@ public class PlayingHeroService {
             }
         }
         return hero;
+    }
+
+    public boolean isSuccesful(EpisodeOption episodeOption, PlayingHero playingHero){
+        Set<Requirement> currentRequirements = episodeOption.getRequirements();
+        int minToReach = 0;
+        for (Requirement requirement : currentRequirements){
+            minToReach += requirement.getRequiredScore();
+        }
+
+        int heroPerformance = 0;
+        for (Requirement requirement : currentRequirements){
+            for (Skill skill : playingHero.getSkills()) {
+                if (skill.getArchetype1().equals(requirement.getArchetype().getArchetype_name()) ||
+                    skill.getArchetype2().equals(requirement.getArchetype().getArchetype_name())) {
+                    System.out.println(skill.getScore());
+                    heroPerformance += skill.getScore();
+                }
+            }
+        }
+
+        double successRate = ((double) heroPerformance/(double) minToReach)*100;
+        return (successRate >= 100);
     }
 
 }

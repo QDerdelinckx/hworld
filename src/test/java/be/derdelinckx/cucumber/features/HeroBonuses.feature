@@ -57,3 +57,45 @@ Feature: Calculate the skill score of my heroes
         Then the skill named "Test" has a score of 3
         Then the skill named "Aventure" has a score of 2
 
+    Scenario: a hero without a role goes on a mission
+        Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
+        When the hero is trying to accomplish a mission
+        And the chosen solution requires a score of 4 on archetype "DPC"
+        Then the mission is succesful
+
+    Scenario: a hero gets assigned a role and goes on a mission
+        Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
+        And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 3
+        When the hero is assigned a role
+        And said role has a bonus of 2 on archetype "DPC"
+        And said role has a bonus of 2 on archetype "ORI"
+        And the hero is powered Up
+        And the hero is trying to accomplish a mission
+        And the chosen solution requires a score of 6 on archetype "DPC"
+        And the chosen solution requires a score of 5 on archetype "ORI"
+        Then the mission is succesful
+
+    Scenario: a hero gets assigned a role with negative effects and goes on a mission
+        Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
+        And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 1
+        When the hero is assigned a role
+        And said role has a bonus of 3 on archetype "DPC"
+        And said role has a bonus of -2 on archetype "ORI"
+        And the hero is powered Up
+        And the hero is trying to accomplish a mission
+        And the chosen solution requires a score of 7 on archetype "DPC"
+        And the chosen solution requires a score of 5 on archetype "ORI"
+        Then the mission is a failure
+
+    Scenario: a hero with a role goes on a mission that doesn't have the same archetypes
+        Given the hero has a skill named "Test" with "DPC" and "CAD" bonuses and a base score of 5
+        And the hero has a skill named "Aventure" with "ORI" and "ARC" bonuses and a base score of 3
+        When the hero is assigned a role
+        And said role has a bonus of 3 on archetype "DPC"
+        And said role has a bonus of 2 on archetype "ORI"
+        And the hero is powered Up
+        And the hero is trying to accomplish a mission
+        And the chosen solution requires a score of 5 on archetype "IMD"
+        And the chosen solution requires a score of 3 on archetype "EMG"
+        Then the mission is a failure
+
